@@ -34,9 +34,19 @@ function inserir(usuario) {
     return usuario;
 }
 
+function deletar(id) {
+    const index = listaUsuarios.findIndex(usuario => usuario.id === id);
+    if (index !== -1) {
+        listaUsuarios.splice(index, 1);
+        return true; // Deletado com sucesso
+    }
+    return false; // Não encontrado
+}
+
 module.exports = {
     listar,
     inserir,
     buscarPorId,
-    buscarPorEmail
+    buscarPorEmail,
+    deletar
 }

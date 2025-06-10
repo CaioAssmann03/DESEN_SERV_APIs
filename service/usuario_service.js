@@ -49,10 +49,21 @@ function verificarLogin(user) {
 
 }
 
+function deletar(id) {
+    let usuario = usuarioRepository.buscarPorId(id);
+    if(usuario) {
+        usuarioRepository.deletar(id);
+    }
+    else {
+        throw { id: 404, msg: "Usuario não encontrado!" }
+    }
+}
+
 module.exports = {
     listar,
     inserir,
     buscarPorId,
     buscarPorEmail,
-    verificarLogin
+    verificarLogin,
+    deletar
 }

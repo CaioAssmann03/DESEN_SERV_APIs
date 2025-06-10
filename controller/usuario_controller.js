@@ -35,9 +35,21 @@ function buscarPorId(req, res) {
     }
 }
 
+function deletar(req, res) {
+    const id = +req.params.id;
+    try {
+        usuarioService.deletar(id);
+        res.status(204).send(); // 204: No Content
+    } catch (err) {
+        res.status(err.id || 500).json(err);
+    }
+}
+
 
 module.exports = {
     listar,
     inserir,
     buscarPorId,
+    deletar,
+    atualizar
 }

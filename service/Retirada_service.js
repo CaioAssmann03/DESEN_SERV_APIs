@@ -3,6 +3,11 @@ const livroRepository = require('../repository/Livro_repository');
 
 
 function registrarRetirada(clienteID, livroID) {
+    // Validação dos IDs
+    if (!clienteID || !livroID) {
+        throw new Error('ClienteID e LivroID são obrigatórios para registrar uma retirada');
+    }
+
     // veerifica se ciente ja tem 3 retiradas ativas
     const retiradasAtivas = retiradaRepository.listarPorCliente(clienteID);
     if (retiradasAtivas.length >= 3) {
